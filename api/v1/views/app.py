@@ -15,6 +15,9 @@ app_host = os.getenv('HBNB_API_HOST', '0.0.0.0')
 app_port = int(os.getenv('HBNB_API_PORT', '5000'))
 app.url_map.strict_slashes = False
 app.register_blueprint(app_views)
+
+# Task 12 
+# Enable cors and allow requests from any origin
 CORS(app, resources={'/*': {'origins': app_host}})
 
 
@@ -27,6 +30,7 @@ def teardown_flask(exception):
     storage.close()
 
 
+# Task 5
 @app.errorhandler(404)
 def error_404(error):
     '''

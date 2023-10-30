@@ -13,6 +13,7 @@ def status():
     return jsonify(status="OK")
 
 
+# Task 4
 @app_views.route('/stats', methods=['GET'], strict_slashes=False)
 def stat():
     """returns the number of each objects by type"""
