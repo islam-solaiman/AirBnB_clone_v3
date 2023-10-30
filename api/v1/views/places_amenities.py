@@ -15,7 +15,9 @@ from flask import abort, jsonify, make_response
 @app_views.route('/places/<place_id>/amenities',
                  methods=['GET'], strict_slashes=False)
 def place_amenities(place_id):
-    """Retrieves the list of all Amenity objects of a Place"""
+    """
+        Retrieves list of all Amenity objects of a Place
+    """
     obj_place = storage.get(Place, place_id)
     if not obj_place:
         abort(404)
@@ -31,7 +33,9 @@ def place_amenities(place_id):
 @app_views.route('/places/<place_id>/amenities/<amenity_id>',
                  methods=['DELETE'], strict_slashes=False)
 def del_place_amenity(place_id, amenity_id):
-    """Returns an empty dictionary with the status code 200"""
+    """
+        Returns empty dictionary with status code 200
+    """
     obj_place = storage.get(Place, place_id)
     if not obj_place:
         abort(404)
@@ -53,7 +57,9 @@ def del_place_amenity(place_id, amenity_id):
 @app_views.route('/places/<place_id>/amenities/<amenity_id>',
                  methods=['POST'], strict_slashes=False)
 def link_place_amenity(place_id, amenity_id):
-    """Returns the Amenity with the status code 201"""
+    """
+        Returns Amenity with the status code 201
+    """
     obj_place = storage.get(Place, place_id)
     if not obj_place:
         abort(404)

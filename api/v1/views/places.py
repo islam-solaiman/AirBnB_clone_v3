@@ -20,7 +20,9 @@ from flask import abort, jsonify, make_response, request
 @app_views.route('cities/<city_id>/places',
                  methods=['GET'], strict_slashes=False)
 def place(city_id):
-    """Retrieves the list of all Place objects of a City"""
+    """
+        Retrieves list of all Place objects of a City
+    """
     obj_city = storage.get(City, city_id)
     if not obj_city:
         abort(404)
@@ -30,7 +32,7 @@ def place(city_id):
 
 @app_views.route('/places/<place_id>', methods=['GET'], strict_slashes=False)
 def single_place(place_id):
-    """Retrieves a Place object"""
+    """ Retrieves a Place object """
     obj = storage.get(Place, place_id)
     if not obj:
         abort(404)
@@ -40,7 +42,9 @@ def single_place(place_id):
 @app_views.route('/places/<place_id>',
                  methods=['DELETE'], strict_slashes=False)
 def del_place(place_id):
-    """Returns an empty dictionary with the status code 200"""
+    """
+        Returns empty dictionary with the status code 200
+    """
     obj = storage.get(Place, place_id)
     if not obj:
         abort(404)
@@ -52,7 +56,9 @@ def del_place(place_id):
 @app_views.route('cities/<city_id>/places',
                  methods=['POST'], strict_slashes=False)
 def post_place(city_id):
-    """Returns the new Place with the status code 201"""
+    """
+        Returns new Place with the status code 201
+    """
     obj_city = storage.get(City, city_id)
     if not obj_city:
         abort(404)
@@ -78,7 +84,9 @@ def post_place(city_id):
 
 @app_views.route('/places/<place_id>', methods=['PUT'], strict_slashes=False)
 def put_place(place_id):
-    """Returns the Place object with the status code 200"""
+    """
+        Returns Place object with the status code 200
+    """
     obj = storage.get(Place, place_id)
     if not obj:
         abort(404)
@@ -98,8 +106,8 @@ def put_place(place_id):
 @app_views.route('/places_search', methods=['POST'], strict_slashes=False)
 def places_search():
     """
-    retrieves all Place objects depending
-    of the JSON in the body of the request
+        Retrieves  Place objects depending
+        of the JSON in the body of the request
     """
     req = request.get_json()
     if req is None:

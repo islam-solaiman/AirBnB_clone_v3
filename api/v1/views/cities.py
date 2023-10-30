@@ -12,7 +12,9 @@ from flask import abort, jsonify, make_response, request
 @app_views.route('/states/<state_id>/cities',
                  methods=['GET'], strict_slashes=False)
 def cities(state_id):
-    """Retrieves the list of all City objects of a State"""
+    """
+        Retrieves list of all City objects of a State
+    """
     obj_state = storage.get(State, state_id)
     if not obj_state:
         abort(404)
@@ -21,7 +23,7 @@ def cities(state_id):
 
 @app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
 def single_city(city_id):
-    """Retrieves a City object"""
+    """ Retrieves a City object """
     obj = storage.get(City, city_id)
     if not obj:
         abort(404)
@@ -30,7 +32,9 @@ def single_city(city_id):
 
 @app_views.route('/cities/<city_id>', methods=['DELETE'], strict_slashes=False)
 def del_city(city_id):
-    """Returns an empty dictionary with the status code 200"""
+    """
+        Returns empty dictionary with the status code 200
+    """
     obj = storage.get(City, city_id)
     if not obj:
         abort(404)
@@ -42,7 +46,9 @@ def del_city(city_id):
 @app_views.route('/states/<state_id>/cities',
                  methods=['POST'], strict_slashes=False)
 def post_city(state_id):
-    """Returns the new City with the status code 201"""
+    """
+        Returns new City with the status code 201
+    """
     obj_state = storage.get(State, state_id)
     if not obj_state:
         abort(404)
@@ -62,7 +68,9 @@ def post_city(state_id):
 
 @app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=False)
 def put_city(city_id):
-    """Returns the City object with the status code 200"""
+    """
+        Returns City object with the status code 200
+    """
     obj = storage.get(City, city_id)
     if not obj:
         abort(404)
